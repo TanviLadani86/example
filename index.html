@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine's Day ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff4e8a, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+        text-align: center;
+        color: white;
+        z-index: 2;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+        font-size: 4rem;
+        text-shadow: 0 0 20px rgba(255,255,255,0.8);
+        animation: glow 2s infinite alternate;
+    }
+
+    p {
+        font-size: 1.5rem;
+        margin-top: 15px;
+        opacity: 0.9;
+    }
+
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: -10px;
+        top: 0;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0) rotate(45deg);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-120vh) rotate(45deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff4e8a, 0 0 30px #ff4e8a;
+        }
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 40px #ff4e8a, 0 0 60px #ff4e8a;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: scale(0.8);}
+        to {opacity: 1; transform: scale(1);}
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>❤️ Happy Valentine's Day ❤️</h1>
+    <p>May your day be filled with love, joy, and beautiful moments 💕</p>
+</div>
+
+<!-- Floating hearts -->
+<script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        heart.style.opacity = Math.random();
+        heart.style.transform = "scale(" + (Math.random() + 0.5) + ") rotate(45deg)";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 200);
+</script>
+
+</body>
+</html>
